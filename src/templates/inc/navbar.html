@@ -1,0 +1,18 @@
+{% load static %}
+
+<div class="container header__container">
+    <a class="logo header__logo">
+        <img src="{% static 'img/logo.svg' %}" alt="Логотип Блога">
+    </a>
+    <div class="header__right">
+        <nav class="nav header__nav">
+            <ul class="nav__list list-reset">
+                <li class="nav__item"><a  href="{% url 'post_list' %}" class="nav__link">Главная</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Категории</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Контакты</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">О нас</a></li>
+            </ul>
+        </nav>
+        <a href="tel:+79878878787" class="phone">+7 (987) 887-87-87</a>
+    </div>
+</div>

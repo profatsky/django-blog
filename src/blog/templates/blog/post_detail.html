@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="post-wrapper">
+    <div class="post">
+        <div class="post-meta">
+            <a href="#" class="post-category">{{ post.category }}</a>
+            <time class="post-date">{{ post.published_at|date:"d b в H:i" }}</time>
+        </div>
+        <div class="post-content">
+            <h1 class="blog-title post-title">{{ post.title }}</h1>
+            <p>{{ post.content }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

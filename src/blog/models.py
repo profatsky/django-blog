@@ -7,6 +7,7 @@ from django.utils import timezone
 
 class Category(models.Model):
     title = models.CharField(max_length=50, db_index=True, verbose_name='Название')
+    slug = models.SlugField(max_length=250, null=True)
 
     class Meta:
         verbose_name = 'Категория'
@@ -14,6 +15,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post_list_by_category', kwargs={'category_slug': self.slug})
 
 
 class Post(models.Model):

@@ -17,7 +17,9 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug')
     search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
 
 
 admin.site.site_title = 'Управление статьями блога'

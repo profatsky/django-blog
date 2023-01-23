@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 
+{% load categories %}
+
 {% block title %}Главная{% endblock %}
 
 {% block content %}
 <div class="posts">
+    {% show_categories current_category %}
     <ul class="post-grid list-reset">
         {% for post in post_list %}
             <li class="post-grid__item">
                 <article class="blog-post">
-                    <a href="" class="blog-post__category">{{ post.category }}</a>
+                    <a href="{{ post.category.get_absolute_url }}" class="blog-post__category">
+                        {{ post.category }}
+                    </a>
                     <h3 class="blog-post__title blog-title">
                         <a href="{{ post.get_absolute_url }}" class="blog-post__link">
                            {{ post.title|truncatewords:13 }}

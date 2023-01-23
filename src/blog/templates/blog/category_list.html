@@ -1,0 +1,33 @@
+<div class="categories">
+    <h2 class="categories__title">Категории статей</h2>
+    <ul class="category-list list-reset">
+        {% if not current_category %}
+            <li class="category-list__item">
+                <a href="{% url 'post_list' %}" class="category__link category__link--active">
+                    Все
+                </a>
+            </li>
+        {% else %}
+            <li class="category-list__item">
+                <a href="{% url 'post_list' %}" class="category__link">
+                    Все
+                </a>
+            </li>
+        {% endif %}
+        {% for category in category_list %}
+            {% if current_category.pk == category.pk %}
+                <li class="category-list__item">
+                    <a href="{{ category.get_absolute_url }}" class="category__link category__link--active">
+                        {{ category }}
+                    </a>
+                </li>
+            {% else %}
+            <li class="category-list__item">
+                <a href="{{ category.get_absolute_url }}" class="category__link">
+                    {{ category }}
+                </a>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

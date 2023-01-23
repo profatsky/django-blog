@@ -1,4 +1,5 @@
 {% load static %}
+{% load sidebar %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
         <section class="content">
             <div class="container content__container">
                 {% block content %}{% endblock %}
-                {% include 'inc/sidebar.html' %}
+                {% show_sidebar %}
                 {% block pagination %}{% endblock %}
             </div>
         </section>

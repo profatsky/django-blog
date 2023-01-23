@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.http import Http404
 from django.views.generic import ListView, DetailView
 
 from .models import Post, Category
@@ -19,7 +19,12 @@ class PostDetailView(DetailView):
     slug_url_kwarg = 'post_slug'
 
     def get_object(self, **kwargs):
-        return get_object_or_404(Post, slug=self.kwargs['post_slug'], status='published')
+        post = Post.objects.get(slug=self.kwargs['post_slug'], status='published')
+        if not post:
+            raise Http404
+        post.views += 1
+        post.save()
+        return post
 
 
 class PostsByCategoryListView(ListView):

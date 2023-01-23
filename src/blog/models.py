@@ -33,6 +33,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', verbose_name='Статус')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категория')
+    views = models.IntegerField(default=0)
     slug = models.SlugField(max_length=250, unique_for_date='published_at')
 
     class Meta:

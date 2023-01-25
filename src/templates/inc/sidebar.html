@@ -18,8 +18,7 @@
     </div>
     <div class="subscribe">
         <h3 class="subscribe__title blog-title">Подписка на рассылку</h3>
-        <form action="#" class="subscribe__form sub-form">
-            <input type="email" class="sub-form__input form-input" placeholder="Email@gmail.com">
+        <form action="{% url 'subscribe' %}" class="subscribe__form sub-form">
             <button class="sub-form__btn form-btn btn-reset">
                 <span>Подписаться</span>
                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">

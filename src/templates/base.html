@@ -1,5 +1,4 @@
 {% load static %}
-{% load sidebar %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +14,10 @@
     </header>
     <main class="main">
         <section class="banner">
-			<h1 class="visually-hidden">Блог</h1>
-		</section>
+            <h1 class="visually-hidden">Блог</h1>
+        </section>
         <section class="content">
-            <div class="container content__container">
-                {% block content %}{% endblock %}
-                {% show_sidebar %}
-                {% block pagination %}{% endblock %}
-            </div>
+            {% block content %}{% endblock %}
         </section>
     </main>
     <footer>

@@ -22,36 +22,38 @@
                             </a>
                         </h3>
                         <p class="blog-post__descr">
-                            {{ post.content|truncatewords:30}}
+                            {{ post.content|truncatewords:30|striptags }}
                         </p>
                         <time class="blog-post__date">{{ post.published_at|date:"d b в H:i" }}</time>
                     </article>
                 </li>
             {% endfor %}
         </ul>
-        <ul class="pagination list-reset">
-            {% if page_obj.has_previous %}
-                <li class="pagination__item">
-                    <a href="?page={{ page_obj.previous_page_number }}" class="pagination__btn">Предыдущая</a>
-                </li>
-            {% endif %}
-            {% for page_num in paginator.page_range %}
-                {% if page_obj.number == page_num %}
+        {% if page_obj.has_other_pages %}
+            <ul class="pagination list-reset">
+                {% if page_obj.has_previous %}
                     <li class="pagination__item">
-                        <a class="pagination__link pagination__link--current">{{ page_num }}</a>
-                    </li>
-                {% else %}
-                    <li class="pagination__item">
-                        <a href="?page={{ page_num }}" class="pagination__link">{{ page_num }}</a>
+                        <a href="?page={{ page_obj.previous_page_number }}" class="pagination__btn">Предыдущая</a>
                     </li>
                 {% endif %}
-            {% endfor %}
-            {% if page_obj.has_next %}
-                <li class="pagination__item">
-                    <a href="?page={{ page_obj.next_page_number }}" class="pagination__btn">Следующая</a>
-                </li>
-            {% endif %}
-        </ul>
+                {% for page_num in paginator.page_range %}
+                    {% if page_obj.number == page_num %}
+                        <li class="pagination__item">
+                            <a class="pagination__link pagination__link--current">{{ page_num }}</a>
+                        </li>
+                    {% else %}
+                        <li class="pagination__item">
+                            <a href="?page={{ page_num }}" class="pagination__link">{{ page_num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="pagination__item">
+                        <a href="?page={{ page_obj.next_page_number }}" class="pagination__btn">Следующая</a>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
     </div>
     {% show_sidebar %}
 </div>

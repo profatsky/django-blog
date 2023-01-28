@@ -21,3 +21,6 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('', include('mailings.urls'))
 ]
+
+
+handler404 = 'config.views.page_not_found'

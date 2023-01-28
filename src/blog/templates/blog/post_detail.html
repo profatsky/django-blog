@@ -2,17 +2,22 @@
 
 {% load sidebar %}
 
+{% block title %}{{ post.title }}{% endblock %}
+
 {% block content %}
 <div class="container content__container">
     <div class="post-wrapper">
         <div class="post">
             <div class="post-meta">
-                <a href="#" class="post-category">{{ post.category }}</a>
+                <a href="{% url 'post_list' %}" class="post-nav__back-btn">Назад</a>
+                <a href="{{ post.category.get_absolute_url }}" class="post-category post-category--active">
+                    {{ post.category }}
+                </a>
                 <time class="post-date">{{ post.published_at|date:"d b в H:i" }}</time>
             </div>
             <div class="post-content">
                 <h1 class="blog-title post-title">{{ post.title }}</h1>
-                <p>{{ post.content }}</p>
+                {{ post.content|safe }}
             </div>
         </div>
     </div>

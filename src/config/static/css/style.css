@@ -565,6 +565,17 @@ body {
 	margin-bottom: 30px;
 }
 
+.post-nav__back-btn {
+	margin-right: 20px;
+	display: inline-block;
+	border-radius: 8px;
+	padding: 8px 17px;
+	font-size: 16px;
+	line-height: 21px;
+	color: var(--accent-color);
+	background: rgba(93, 113, 221, 0.05);
+}
+
 .post-category {
 	margin-right: 20px;
 	display: inline-block;
@@ -573,7 +584,12 @@ body {
 	font-size: 16px;
 	line-height: 21px;
 	color: var(--accent-color);
-	background:#f7f8fD;
+	background: #f7f8fD;
+}
+
+.post-category--active {
+    color: #f7f8fD;
+    background: var(--accent-color);
 }
 
 .post-date {
@@ -587,6 +603,14 @@ body {
 	font-size: 30px;
 	line-height: 38px;
 	color: #000;
+}
+
+.post-content h2, h3, h4, h5 {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 31px;
+	color: var(--dark-color);
+    margin-bottom: 30px;
 }
 
 .post p {

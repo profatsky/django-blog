@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from .models import Post, Category
 
 
-class PostListView(ListView):
+class PostList(ListView):
     model = Post
     template_name = 'blog/post_list.html'
     paginate_by = 10
@@ -13,7 +13,7 @@ class PostListView(ListView):
         return Post.objects.filter(status='published')
 
 
-class PostDetailView(DetailView):
+class PostDetail(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
     slug_url_kwarg = 'post_slug'
@@ -27,7 +27,7 @@ class PostDetailView(DetailView):
         return post
 
 
-class PostsByCategoryListView(ListView):
+class PostListByCategory(ListView):
     model = Post
     template_name = 'blog/post_list.html'
     paginate_by = 10
